@@ -1,0 +1,442 @@
+3.5 Git Branching - Remote Branches
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/sumitk39/hello-world.git
+  Push  URL: https://github.com/sumitk39/hello-world.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (fast-forwardable)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git checkout origin/master
+Note: checking out 'origin/master'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at 9d7a9f8... Merge pull request #1 from sumitk39/readme-edits
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world ((9d7a9f8...))
+$ git checkout master
+Previous HEAD position was 9d7a9f8... Merge pull request #1 from sumitk39/readme-edits
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 5 commits.
+  (use "git push" to publish your local commits)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git branch -r
+  origin/HEAD -> origin/master
+  origin/master
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/sumitk39/hello-world.git
+  Push  URL: https://github.com/sumitk39/hello-world.git
+  HEAD branch: master
+  Remote branches:
+    master          tracked
+    myremote-branch new (next fetch will store in remotes/origin)
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (fast-forwardable)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git branch -r
+  origin/HEAD -> origin/master
+  origin/master
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git fetch origin
+From https://github.com/sumitk39/hello-world
+ * [new branch]      myremote-branch -> origin/myremote-branch
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git branch -r
+  origin/HEAD -> origin/master
+  origin/master
+  origin/myremote-branch
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git branch
+  issue25
+* master
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/sumitk39/hello-world.git
+  Push  URL: https://github.com/sumitk39/hello-world.git
+  HEAD branch: master
+  Remote branches:
+    master          tracked
+    myremote-branch tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (fast-forwardable)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git push origin issue25
+Counting objects: 22, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (17/17), done.
+Writing objects: 100% (22/22), 1.82 KiB | 266.00 KiB/s, done.
+Total 22 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), done.
+To https://github.com/sumitk39/hello-world.git
+ * [new branch]      issue25 -> issue25
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git branch -r
+  origin/HEAD -> origin/master
+  origin/issue25
+  origin/master
+  origin/myremote-branch
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/sumitk39/hello-world.git
+  Push  URL: https://github.com/sumitk39/hello-world.git
+  HEAD branch: master
+  Remote branches:
+    issue25         tracked
+    master          tracked
+    myremote-branch tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local refs configured for 'git push':
+    issue25 pushes to issue25 (up to date)
+    master  pushes to master  (fast-forwardable)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git branch
+  issue25
+* master
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (master)
+$ git checkout myremote-branch
+Switched to a new branch 'myremote-branch'
+Branch myremote-branch set up to track remote branch myremote-branch from origin.
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (myremote-branch)
+$ git branch
+  issue25
+  master	
+* myremote-branch
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (myremote-branch)
+$ git status
+On branch myremote-branch
+Your branch is up-to-date with 'origin/myremote-branch'.
+
+nothing to commit, working tree clean
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (myremote-branch)
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/sumitk39/hello-world.git
+  Push  URL: https://github.com/sumitk39/hello-world.git
+  HEAD branch: master
+  Remote branches:
+    issue25         tracked
+    master          tracked
+    myremote-branch tracked
+  Local branches configured for 'git pull':
+    master          merges with remote master
+    myremote-branch merges with remote myremote-branch
+  Local refs configured for 'git push':
+    issue25         pushes to issue25         (up to date)
+    master          pushes to master          (fast-forwardable)
+    myremote-branch pushes to myremote-branch (local out of date)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (myremote-branch)
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/sumitk39/hello-world.git
+  Push  URL: https://github.com/sumitk39/hello-world.git
+  HEAD branch: master
+  Remote branches:
+    issue25         tracked
+    master          tracked
+    myremote-branch tracked
+  Local branches configured for 'git pull':
+    master          merges with remote master
+    myremote-branch merges with remote myremote-branch
+  Local refs configured for 'git push':
+    issue25         pushes to issue25         (local out of date)
+    master          pushes to master          (fast-forwardable)
+    myremote-branch pushes to myremote-branch (local out of date)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (myremote-branch)
+$ git pull
+remote: Counting objects: 8, done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 8 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (8/8), done.
+From https://github.com/sumitk39/hello-world
+   9d7a9f8..a4a3c14  myremote-branch -> origin/myremote-branch
+   e12ff29..d18f692  issue25         -> origin/issue25
+Updating 9d7a9f8..a4a3c14
+Fast-forward
+ file-for-commit-six.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file-for-commit-six.txt
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (myremote-branch)
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/sumitk39/hello-world.git
+  Push  URL: https://github.com/sumitk39/hello-world.git
+  HEAD branch: master
+  Remote branches:
+    issue25         tracked
+    master          tracked
+    myremote-branch tracked
+  Local branches configured for 'git pull':
+    master          merges with remote master
+    myremote-branch merges with remote myremote-branch
+  Local refs configured for 'git push':
+    issue25         pushes to issue25         (local out of date)
+    master          pushes to master          (fast-forwardable)
+    myremote-branch pushes to myremote-branch (up to date)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (myremote-branch)
+$ git checkout issue25
+Switched to branch 'issue25'
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/sumitk39/hello-world.git
+  Push  URL: https://github.com/sumitk39/hello-world.git
+  HEAD branch: master
+  Remote branches:
+    issue25         tracked
+    master          tracked
+    myremote-branch tracked
+  Local branches configured for 'git pull':
+    master          merges with remote master
+    myremote-branch merges with remote myremote-branch
+  Local refs configured for 'git push':
+    issue25         pushes to issue25         (local out of date)
+    master          pushes to master          (fast-forwardable)
+    myremote-branch pushes to myremote-branch (up to date)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git pull
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> issue25
+
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git pull origin issue25
+From https://github.com/sumitk39/hello-world
+ * branch            issue25    -> FETCH_HEAD
+Updating e12ff29..d18f692
+Fast-forward
+ src/issue25/file-by-remote.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 src/issue25/file-by-remote.txt
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/sumitk39/hello-world.git
+  Push  URL: https://github.com/sumitk39/hello-world.git
+  HEAD branch: master
+  Remote branches:
+    issue25         tracked
+    master          tracked
+    myremote-branch tracked
+  Local branches configured for 'git pull':
+    master          merges with remote master
+    myremote-branch merges with remote myremote-branch
+  Local refs configured for 'git push':
+    issue25         pushes to issue25         (local out of date)
+    master          pushes to master          (fast-forwardable)
+    myremote-branch pushes to myremote-branch (up to date)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git pull
+remote: Counting objects: 5, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 5 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (5/5), done.
+From https://github.com/sumitk39/hello-world
+   d18f692..16bd593  issue25    -> origin/issue25
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> issue25
+
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git branch --set-upstream-to=origin/issue25 issue25
+Branch issue25 set up to track remote branch issue25 from origin.
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git pull
+Updating d18f692..16bd593
+Fast-forward
+ src/issue25/another-file-by-remote.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 src/issue25/another-file-by-remote.txt
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git branch -r
+  origin/HEAD -> origin/master
+  origin/issue25
+  origin/master
+  origin/myremote-branch
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/sumitk39/hello-world.git
+  Push  URL: https://github.com/sumitk39/hello-world.git
+  HEAD branch: master
+  Remote branches:
+    issue25         tracked
+    master          tracked
+    myremote-branch tracked
+  Local branches configured for 'git pull':
+    issue25         merges with remote issue25
+    master          merges with remote master
+    myremote-branch merges with remote myremote-branch
+  Local refs configured for 'git push':
+    issue25         pushes to issue25         (up to date)
+    master          pushes to master          (fast-forwardable)
+    myremote-branch pushes to myremote-branch (up to date)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git branch -vv
+* issue25         16bd593 [origin/issue25] Create another-file-by-remote.txt
+  master          8080090 [origin/master: ahead 5] issue25 merged to master
+  myremote-branch a4a3c14 [origin/myremote-branch] Create file-for-commit-six.txt
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git status
+On branch issue25
+Your branch is up-to-date with 'origin/issue25'.
+
+nothing to commit, working tree clean
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git log
+commit 16bd59313e1aeb6f1728799cbff10aade30bcc8c (HEAD -> issue25, origin/issue25)
+Author: sumitk39 <sumitahuja39@gmail.com>
+Date:   Sun Oct 29 10:52:33 2017 +0530
+
+    Create another-file-by-remote.txt
+
+commit d18f692d6f0a7dbd62df5df0fc6074efcd28c004
+Author: sumitk39 <sumitahuja39@gmail.com>
+Date:   Sun Oct 29 10:46:42 2017 +0530
+
+    Create file-by-remote.txt
+
+commit e12ff29e2a2609d29a68d5dfb46dc72928a5fa75
+Author: sumitk39 <sumit.kumar@entosstech.com>
+Date:   Sat Oct 28 20:07:29 2017 +0530
+
+    Commit Five
+
+commit ba8dd01ab037ebda101bbd4407b1bdc2953c6df9
+Author: sumitk39 <sumit.kumar@entosstech.com>
+Date:   Sat Oct 28 19:14:47 2017 +0530
+
+    Commit Three
+
+commit e9cdd441c7a34085daa505aab4d27df0dda90dee
+Author: sumitk39 <sumit.kumar@entosstech.com>
+Date:   Sat Oct 28 19:06:40 2017 +0530
+
+    Commit Two
+
+commit c5683c0f8c3609d1e7f3c9a9aa7da5f47a98da19
+Author: sumitk39 <sumit.kumar@entosstech.com>
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git checkout -b serverfix
+Switched to a new branch 'serverfix'
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (serverfix)
+$ git branch -vv
+  issue25         16bd593 [origin/issue25] Create another-file-by-remote.txt
+  master          8080090 [origin/master: ahead 5] issue25 merged to master
+  myremote-branch a4a3c14 [origin/myremote-branch] Create file-for-commit-six.txt
+* serverfix       16bd593 Create another-file-by-remote.txt
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (serverfix)
+$ git fetch origin
+remote: Counting objects: 5, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 5 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (5/5), done.
+From https://github.com/sumitk39/hello-world
+   16bd593..cabac2f  issue25    -> origin/issue25
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (serverfix)
+$ git branch -vv
+  issue25         16bd593 [origin/issue25: behind 1] Create another-file-by-remote.txt
+  master          8080090 [origin/master: ahead 5] issue25 merged to master
+  myremote-branch a4a3c14 [origin/myremote-branch] Create file-for-commit-six.txt
+* serverfix       16bd593 Create another-file-by-remote.txt
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (serverfix)
+$ git push origin --delete myremote-branch
+To https://github.com/sumitk39/hello-world.git
+ - [deleted]         myremote-branch
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (serverfix)
+$ git checkout issue25
+Switched to branch 'issue25'
+Your branch is behind 'origin/issue25' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git merge origin/issue25
+Updating 16bd593..cabac2f
+Fast-forward
+ src/issue25/yet-another-file-by-remote.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 src/issue25/yet-another-file-by-remote.txt
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$ git branch -vv
+* issue25         cabac2f [origin/issue25] Create yet-another-file-by-remote.txt
+  master          8080090 [origin/master: ahead 5] issue25 merged to master
+  myremote-branch a4a3c14 [origin/myremote-branch: gone] Create file-for-commit-six.txt
+  serverfix       16bd593 Create another-file-by-remote.txt
+
+kesavan@ENTOSS MINGW64 /e/EntossTechSW/test/hello-world (issue25)
+$
+
+
